@@ -1,6 +1,7 @@
+import { Typography } from "@mui/material";
 
 export default function Home() {
   return (
-    <>Hello User, Welcome to Pam</>
+    <Typography variant="h1">Welcome User to Pam</Typography> 
   );
 }
