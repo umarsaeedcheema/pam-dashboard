@@ -10,9 +10,16 @@ export function calculateTasksCompleted(data: any[]) {
   }
   
   export function calculateFeedbackSatisfied(data: any[]) {
-    const satisfiedFeedback = data.filter(call => call.Feedback === true).length;
+    if (data.length === 0) return 0;  // Handle case with no data
+  
+    const satisfiedFeedback = data.filter(call => {
+      // Assuming Feedback is an object with properties like HappyWithAI or HappyWithHuman
+      return call.Feedback && (call.Feedback.HappyWithAI || call.Feedback.HappyWithHuman);
+    }).length;
+  
     return ((satisfiedFeedback / data.length) * 100).toFixed(2);
   }
+  
   
   export function processDataForCallsPerDay(data: any[]) {
     // Group calls by date over the last 7 days
