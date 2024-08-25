@@ -1,53 +1,54 @@
-import { DynamoDBClient, PutItemCommand } from "@aws-sdk/client-dynamodb";
+import {  PutItemCommand } from "@aws-sdk/client-dynamodb";
 import { marshall } from "@aws-sdk/util-dynamodb";
+import client from "./dbClient.js";
 
-const client = new DynamoDBClient({ region: "us-east-1" });
+// const client = new DynamoDBClient({ region: "us-east-1" });
 
-interface Feedback {
-  HappyWithAI: boolean;
-  HappyWithHuman: boolean;
-  WillUseServiceAgain: boolean;
-  FeedbackTime: string;
-}
+// interface Feedback {
+//   HappyWithAI: boolean;
+//   HappyWithHuman: boolean;
+//   WillUseServiceAgain: boolean;
+//   FeedbackTime: string;
+// }
 
-interface Caller {
-  CallerID: string;
-  Name: string;
-  PhoneNumber: string;
-  Location: string;
-  IsPreviousCustomer: boolean;
-  TimeOfCall: string;
-  Language: string;
-  CallHistory: string[];
-}
+// interface Caller {
+//   CallerID: string;
+//   Name: string;
+//   PhoneNumber: string;
+//   Location: string;
+//   IsPreviousCustomer: boolean;
+//   TimeOfCall: string;
+//   Language: string;
+//   CallHistory: string[];
+// }
 
-interface Agent {
-  AgentID: string;
-  AgentType: "AI" | "Human";
-  Model: string;
-  Performance: string;
-}
+// interface Agent {
+//   AgentID: string;
+//   AgentType: "AI" | "Human";
+//   Model: string;
+//   Performance: string;
+// }
 
-interface Call {
-  CallID: string;
-  Received: string;
-  Accepted: boolean;
-  HandledByAgent: "AI" | "Human";
-  RedirectedToAgent: "AI" | "Human" | "None";
-  Length: number;
-  Outcome: "Led to sale" | "Could not lead to a sale";
-  Topic: "Routine maintenance" | "Repair" | "Oil Change" | "Car wash" | "Car sale";
-  CallTranscript: string;
-  Feedback: Feedback;
-}
+// interface Call {
+//   CallID: string;
+//   Received: string;
+//   Accepted: boolean;
+//   HandledByAgent: "AI" | "Human";
+//   RedirectedToAgent: "AI" | "Human" | "None";
+//   Length: number;
+//   Outcome: "Led to sale" | "Could not lead to a sale";
+//   Topic: "Routine maintenance" | "Repair" | "Oil Change" | "Car wash" | "Car sale";
+//   CallTranscript: string;
+//   Feedback: Feedback;
+// }
 
-interface Data {
-  Call: Call;
-  Caller: Caller;
-  Agent: Agent;
-}
+// interface Data {
+//   Call: Call;
+//   Caller: Caller;
+//   Agent: Agent;
+// }
 
-const data: Data[] = [
+const data = [
   {
     Call:{
     CallID: "call-001",
