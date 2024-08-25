@@ -3,7 +3,7 @@ import { PieChart, Pie, Tooltip, Cell, ResponsiveContainer, Legend } from 'recha
 import { Typography, Box } from '@mui/material';
 import { processCallTopics } from '../utils/callTopics'; 
 
-export default function CallTopicsDistribution({ callsData }) {
+export default function CallTopicsDistribution({ callsData }: { callsData: any[] }) {
   const [chartData, setChartData] = useState<any>([]);
 
   const specificTopics = [
@@ -39,7 +39,7 @@ export default function CallTopicsDistribution({ callsData }) {
             outerRadius={80}
             fill="#8884d8"
           >
-            {chartData.map((entry, index) => (
+            {chartData.map((_entry: any, index: number) => (
               <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
             ))}
           </Pie>

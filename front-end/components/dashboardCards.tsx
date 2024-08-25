@@ -6,7 +6,13 @@ import { LineChart, Line, BarChart, Bar, Tooltip, ResponsiveContainer, PieChart,
 import { calculateTasksCompleted, calculateNewLeads, calculateFeedbackSatisfied, processDataForCallsPerDay, processDataForFeedback } from '@/utils/dashboardCardUtils';
 
 export default function DashboardCards() {
-  const [cardData, setCardData] = useState([
+  const [cardData, setCardData] = useState<Array<{
+    title: string;
+    value: string;
+    description: string;
+    data: any;
+    chartType: string;
+  }>>([
     { title: 'Calls per day', value: 'Loading...', description: 'Total Calls', data: [], chartType: 'line' },
     { title: 'Tasks', value: 'Loading...', description: 'Completed', data: [], chartType: 'circular' },
     { title: 'New Leads', value: 'Loading...', description: 'New Leads', data: [], chartType: 'bar' },

@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from 'react';
 import { Box, Typography, Grid } from '@mui/material';
-import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import DashboardCards from '@/components/dashboardCards';
 import CallTopicsDistribution from '@/components/topicsDistribution';
 import SalesByAgent from '@/components/salesByAgent';

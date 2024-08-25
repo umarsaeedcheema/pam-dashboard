@@ -5,7 +5,7 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } fro
 import { Box, Typography } from '@mui/material';
 import { processUsersByLanguage } from '@/utils/usersByLanguageUtil'; 
 
-export default function UsersByLanguage({ callersData }) {
+export default function UsersByLanguage({ callersData }: { callersData: any[] }) {
   const [chartData, setChartData] = useState<any[]>([]);
 
   useEffect(() => {

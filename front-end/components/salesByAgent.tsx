@@ -4,7 +4,7 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } fro
 import { Box, Typography } from '@mui/material';
 import { processSalesByAgent } from '@/utils/salesByAgentUtil'; 
 
-export default function SalesByAgent({ callsData }) {
+export default function SalesByAgent({ callsData }: { callsData: any[] }) {
   const [chartData, setChartData] = useState<any[]>([]);
 
   useEffect(() => {
