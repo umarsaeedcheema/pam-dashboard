@@ -5,7 +5,7 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } fro
 import { Box, Typography } from '@mui/material';
 import { processUsersByLocation } from '@/utils/usersByLocationUtil';
 
-export default function UsersByLocation({ callersData }) {
+export default function UsersByLocation({ callersData }: { callersData: any[] }) {
   const [chartData, setChartData] = useState<any[]>([]);
 
   useEffect(() => {
