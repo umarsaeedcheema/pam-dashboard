@@ -7,21 +7,21 @@ import client from "./dbClient.js";
 const data = [
   {
     Call:{
-    CallID: "call-001",
-    Received: "2024-08-24T08:00:00Z",
-    Accepted: true,
-    HandledByAgent: "AI",
-    RedirectedToAgent: "Human",
-    Length: 300,
-    Outcome: "Led to sale",
-    Topic: "Oil Change",
-    CallTranscript: "Customer requested an oil change...",
-    Feedback: {
-      HappyWithAI: true,
-      HappyWithHuman: true,
-      WillUseServiceAgain: true,
-      FeedbackTime: "2024-08-24T08:10:00Z"
-    }
+      CallID: "call-001",
+      Received: "2024-08-24T08:00:00Z",
+      Accepted: true,
+      HandledByAgent: "AI",
+      RedirectedToAgent: "Human",
+      Length: 300,
+      Outcome: "Led to sale",
+      Topic: "Oil Change",
+      CallTranscript: "Customer requested an oil change...",
+      Feedback: {
+        HappyWithAI: true,
+        HappyWithHuman: true,
+        WillUseServiceAgain: true,
+        FeedbackTime: "2024-08-24T08:10:00Z"
+      }
     },
     Caller: {
       CallerID: "caller-001",
