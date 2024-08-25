@@ -5,6 +5,8 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } fro
 import DashboardCards from '@/components/dashboardCards';
 import CallTopicsDistribution from '@/components/topicsDistribution';
 import SalesByAgent from '@/components/salesByAgent';
+import UsersByLocation from '@/components/usersByLocation';
+import UsersByLanguage from '@/components/usersByLanguage';
 
 
 export default function Dashboard() {
@@ -31,13 +33,13 @@ export default function Dashboard() {
     fetchData();
   }, []);
 
-  // Example charts based on the data structure
+
   return (
     <Box sx={{ p: 3 }}>
       <Typography variant="h4" gutterBottom>
         Dashboard
       </Typography>
-      
+
       <DashboardCards />
 
       <Grid container spacing={3}>
@@ -51,16 +53,11 @@ export default function Dashboard() {
         </Grid>
 
         <Grid item xs={12} md={6}>
-          <Typography variant="h6">Call Outcomes</Typography>
-          <ResponsiveContainer width="100%" height={300}>
-            <BarChart data={callsData}>
-              <XAxis dataKey="Outcome" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey="Length" fill="#82ca9d" />
-            </BarChart>
-          </ResponsiveContainer>
+          <UsersByLocation callersData={callersData} />
+        </Grid>
+
+        <Grid item xs={12} md={6}>
+          <UsersByLanguage callersData={callersData} />
         </Grid>
       </Grid>
     </Box>

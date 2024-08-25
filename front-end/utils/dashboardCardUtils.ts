@@ -15,8 +15,20 @@ export function calculateTasksCompleted(data: any[]) {
   }
   
   export function processDataForCallsPerDay(data: any[]) {
-    // Example logic to generate data for the line chart
-    return data.map(call => ({ date: new Date(call.TimeOfCall).toLocaleDateString(), value: 1 }));
+    // Group calls by date over the last 7 days
+    const today = new Date();
+    const last7Days = Array.from({ length: 7 }, (_, i) => {
+      const date = new Date(today);
+      date.setDate(today.getDate() - i);
+      return date.toLocaleDateString();
+    }).reverse();
+  
+    const callsPerDay = last7Days.map(date => ({
+      date,
+      value: data.filter(call => new Date(call.TimeOfCall).toLocaleDateString() === date).length,
+    }));
+  
+    return callsPerDay;
   }
   
   export function processDataForFeedback(data: any[]) {
