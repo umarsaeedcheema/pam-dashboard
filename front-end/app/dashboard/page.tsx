@@ -1,8 +1,11 @@
 "use client";
 import React, { useEffect, useState } from 'react';
 import { Box, Typography, Grid } from '@mui/material';
-import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
-import DashboardCards from '@/components/dashboard';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import DashboardCards from '@/components/dashboardCards';
+import CallTopicsDistribution from '@/components/topicsDistribution';
+import SalesByAgent from '@/components/salesByAgent';
+
 
 export default function Dashboard() {
   const [callsData, setCallsData] = useState([]);
@@ -34,42 +37,17 @@ export default function Dashboard() {
       <Typography variant="h4" gutterBottom>
         Dashboard
       </Typography>
+      
       <DashboardCards />
 
       <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
-          <Typography variant="h6">Call Topics Distribution</Typography>
-          <ResponsiveContainer width="100%" height={300}>
-            <PieChart>
-              <Pie
-                data={callsData}
-                dataKey="Length" // or other key depending on your data
-                nameKey="Topic"
-                cx="50%"
-                cy="50%"
-                outerRadius={80}
-                fill="#8884d8"
-              >
-                {callsData.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={index % 2 === 0 ? "#8884d8" : "#82ca9d"} />
-                ))}
-              </Pie>
-              <Tooltip />
-            </PieChart>
-          </ResponsiveContainer>
+          <CallTopicsDistribution callsData={callsData} />
         </Grid>
 
+
         <Grid item xs={12} md={6}>
-          <Typography variant="h6">Agent Performance</Typography>
-          <ResponsiveContainer width="100%" height={300}>
-            <BarChart data={agentsData}>
-              <XAxis dataKey="AgentID" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey="Performance" fill="#8884d8" />
-            </BarChart>
-          </ResponsiveContainer>
+          <SalesByAgent callsData={callsData} />
         </Grid>
 
         <Grid item xs={12} md={6}>
