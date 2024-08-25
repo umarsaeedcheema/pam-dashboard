@@ -14,6 +14,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import Link from 'next/link';
 
 
 interface Props {
@@ -35,19 +36,32 @@ export default function Navbar(props: Readonly<Props>) {
     setMobileOpen((prevState) => !prevState);
   };
 
+  const handleLogout = () => {
+    console.log("Logout clicked"); 
+  };
+
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
         MUI
       </Typography>
-    
+
       <Divider />
       <List>
         {navItems.map((item) => (
           <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={item} />
-            </ListItemButton>
+
+            {item === 'Home' || item === 'Account' ? (
+              <Link href={item === 'Home' ? '/' : '/account'} passHref>
+                <ListItemButton sx={{ textAlign: 'center' }}>
+                  <ListItemText primary={item} />
+                </ListItemButton>
+              </Link>
+            ) : (
+              <ListItemButton sx={{ textAlign: 'center' }} onClick={item === 'Logout' ? handleLogout : undefined}>
+                <ListItemText primary={item} />
+              </ListItemButton>
+            )}
           </ListItem>
         ))}
       </List>
@@ -55,6 +69,9 @@ export default function Navbar(props: Readonly<Props>) {
   );
 
   const container = window !== undefined ? () => window().document.body : undefined;
+
+  
+
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -79,11 +96,20 @@ export default function Navbar(props: Readonly<Props>) {
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
-              <Button key={item} sx={{ color: '#fff' }} >
-                {item}
-              </Button>
+              item === 'Home' || item === 'Account' ? (
+                <Link href={item === 'Home' ? '/' : '/account'} passHref key={item}>
+                  <Button sx={{ color: '#fff' }}>
+                    {item}
+                  </Button>
+                </Link>
+              ) : (
+                <Button key={item} sx={{ color: '#fff' }} onClick={item === 'Logout' ? handleLogout : undefined}>
+                  {item}
+                </Button>
+              )
             ))}
           </Box>
+
         </Toolbar>
       </AppBar>
       <nav>
@@ -93,7 +119,7 @@ export default function Navbar(props: Readonly<Props>) {
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
+            keepMounted: true, 
           }}
           sx={{
             display: { xs: 'block', sm: 'none' },
