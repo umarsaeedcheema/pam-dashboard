@@ -23,7 +23,7 @@ export default function RootLayout({
         <Sidebar />
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
           <Navbar />
-          <main style={{ flex: 1, padding: '16px' }}>
+          <main style={{ flex: 1 }}>
             {children}
           </main>
         </div>
