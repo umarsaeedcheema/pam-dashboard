@@ -74,8 +74,8 @@ export default function Navbar(props: Readonly<Props>) {
             variant="h6"
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-          >
-            Logo
+          > 
+             <img src="./pam.png" alt="Logo" style={{ height: '40px', width: 'auto' }} />
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
